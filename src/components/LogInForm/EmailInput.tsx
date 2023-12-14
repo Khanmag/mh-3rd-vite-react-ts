@@ -1,10 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { emailValidator } from '../../common/validators';
 import s from "./LogInForm.module.scss";
 
 const EmailInput = () => {
   const [email, setEmail] = useState<string>("");
-  const [isEmailWrong, setIsEmailWrong] = useState(false)
+  const [isEmailRight, setIsEmailRight] = useState(false)
+  useEffect(() => {
+    const timerId = setTimeout( () => {
+      if (emailValidator(email)) setIsEmailRight(true)
+      else setIsEmailRight(false)
+      console.log('rerender');
+    }, 1000)
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [email])
   return (
     <input
     type="email"
@@ -13,10 +23,8 @@ const EmailInput = () => {
     value={email}
     onChange={(e) => {
       setEmail(e.target.value);
-      if (emailValidator(e.target.value)) setIsEmailWrong(false)
-      else setIsEmailWrong(true)
     }}
-    className={isEmailWrong ? s.hasError : ""}
+    className={isEmailRight ? "" : s.hasError }
   />
   );
 };
