@@ -1,16 +1,13 @@
-import { FC, FormEventHandler, useState } from "react";
+import { FormEventHandler, useContext, useState } from "react";
 import s from "./LogInForm.module.scss";
 import EmailInput from "./EmailInput";
-type LogInFormProps = {
-  logIn: (email: string, pass: string) => void;
-};
-const LogInForm: FC<LogInFormProps> = ({ logIn }) => {
+import AuthContext from "../../context/authContext";
+
+const LogInForm= () => {
   const [pass, setPass] = useState<string>("");
+  const {logIn} = useContext(AuthContext)
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    // const email = e.currentTarget.email.value
-    // const pass = e.currentTarget.pass.value
-    // localStorage.setItem(email, pass)
     logIn(e.currentTarget.email.value, e.currentTarget.pass.value);
   };
   return (

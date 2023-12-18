@@ -1,11 +1,18 @@
-const Buttons = () => {
+import React from "react";
+
+type ButtonsProps = {
+  toggleGreen: () => void;
+}
+const Buttons = ({toggleGreen}:ButtonsProps) => {
   console.log('render BUTTONS');
   return (
     <>
       <button>change main text color</button>
       <br />
-      <button>change title color</button>
+      <button onClick={toggleGreen}>change title color</button>
     </>
   );
 };
-export default Buttons
+// export default Buttons
+const MemoButtons = React.memo(Buttons)
+export default MemoButtons

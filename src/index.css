@@ -13,9 +13,11 @@ a {
 }
 body {
   font-size: 20px;
+  background-color: black;
 }
 body, input::-webkit-input-placeholder, button {
   font-family: 'Comfortaa', sans-serif;
+  color: white;
 }
 input {
   border: none;
@@ -23,8 +25,8 @@ input {
 }
 button {
   border: none;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   cursor: pointer;
   transition-duration: 0.1s;
   border-radius: 5px;
