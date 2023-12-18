@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import TextBlock from "./TextBlock";
 
 const TestRerender = () => {
@@ -6,13 +6,14 @@ const TestRerender = () => {
   const handleClick = () => {
     setIsRed((prev) => !prev);
   };
+  const goodToggleRed = useCallback(handleClick, [])
   console.log('render WRAPPER');
   return (
     <div>
-      <h1 style={isRed ? { color: "red" } : {}} onClick={handleClick}>
+      <h1 style={isRed ? { color: "red" } : {}} onClick={goodToggleRed}>
         MAIN TEXT
       </h1>
-      <TextBlock/>
+      <TextBlock toggleRed={goodToggleRed}/>
     </div>
   );
 };
