@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import LogInForm from "./components/LogInForm/LogInForm";
 import PostList from "./components/Posts/PostList";
 import AuthContext from "./context/authContext";
+// import TestRerender from "./components/TestRerender/TestRerender";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -31,7 +32,7 @@ function App() {
       <AuthContext.Provider value={{isAuth}}>
         <PostList />
       </AuthContext.Provider>
-      
+      {/* <TestRerender />       */}
     </>
   );
 }
